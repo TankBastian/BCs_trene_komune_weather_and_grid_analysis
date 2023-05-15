@@ -1,6 +1,6 @@
 import pandas as pd
-from sol_vinkel_kalkulator_55_timer import df_data
-from Nett_data import df_siste_aar
+from Calculator_sun_elevation_angel import df_data
+from Module_grid_data import df_siste_aar
 import math
 import matplotlib.pyplot as plt
 import locale

@@ -1,6 +1,6 @@
 # regner ut sol vinkle
 
-from API_vær_data import latitude, longitude, df_weather
+from Get_weather_api import latitude, longitude, df_weather
 import math
 import datetime
 import pandas as pd
