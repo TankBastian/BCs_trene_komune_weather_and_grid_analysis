@@ -5,12 +5,16 @@ import math
 import datetime
 import pandas as pd
 
+
+# Function witch take Latitude, longitude, time and date to find solar  eleavtion angel
 def getSEA(latitude, longitude, utc_offset, date):
     hour = date.hour
     minute = date.minute
     second = date.second
+
     # Round down to the nearest hour
     date = date.replace(minute=0, second=0, microsecond=0)
+
     # Check your timezone to add the offset
     hour_minute = (hour + minute / 60) - utc_offset
     day_of_year = date.timetuple().tm_yday
@@ -53,6 +57,7 @@ def getSEA(latitude, longitude, utc_offset, date):
     return math.radians(SEA), SEA
 
 
+# Making a datafram with the function for finding the SEA (Solar elevation angel).
 def create_dataframe(latitude, longitude, utc_offset, hours):
     now = datetime.datetime.now()
     # Round down to the nearest hour
@@ -77,16 +82,16 @@ def create_dataframe(latitude, longitude, utc_offset, hours):
     return df
 
 
-# Example usage
+# Varibals for Træna kommune.
 latitude = 66.6348
 longitude = 12.0253
 utc_offset = 2
 hours = 55
 
+
+# Start on a datafame
 df = create_dataframe(latitude, longitude, utc_offset, hours)
 
 
-
+# merg the weather fame to add the SEA to weather frame
 df_data= pd.merge(df_weather, df, on='time')
-
-print(df_data)
